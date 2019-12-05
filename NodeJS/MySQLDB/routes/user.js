@@ -66,7 +66,7 @@ router.get('/user/:id', (req, res) => {
 });
 
 router.get('/messages', (req, res) => {
-    console.log("hi, I'm a message.");
+    console.log("Hi, I'm a message.");
     res.end();
 });
 
