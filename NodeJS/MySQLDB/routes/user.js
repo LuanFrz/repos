@@ -16,6 +16,8 @@ function getConnection () {
 
 router.post('/user_create', (req, res) => {
 
+    console.log(req.body)
+
     const firstName = req.body.createFirstName;
     const lastName = req.body.createLastName;
     

@@ -6,11 +6,11 @@ const app = express();
 
 const router = require('./routes/user.js')
 
-app.use(router);
-
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(urlencodedParser);
 app.use(bodyParser.json());
+
+app.use(router);
 
 // Makes it so the app serves the files located in /public.
 app.use(express.static('./public'));
