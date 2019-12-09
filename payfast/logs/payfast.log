@@ -6,3 +6,6 @@
 {"level":"info","message":"::1 - - [02/Dec/2019:11:40:22 +0000] \"GET /pagamentos HTTP/1.1\" 200 3\n","timestamp":"2019-12-02T11:40:22.436Z"}
 {"level":"info","message":"::1 - - [02/Dec/2019:11:40:22 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150\n","timestamp":"2019-12-02T11:40:22.472Z"}
 {"level":"info","message":"::1 - - [02/Dec/2019:11:40:28 +0000] \"GET /pagamentos/pagamento HTTP/1.1\" 404 159\n","timestamp":"2019-12-02T11:40:28.999Z"}
+{"level":"info","message":"::1 - - [03/Dec/2019:13:31:04 +0000] \"PUT /pagamentos/pagamento/1 HTTP/1.1\" 500 113\n","timestamp":"2019-12-03T13:31:04.234Z"}
+{"level":"info","message":"::1 - - [03/Dec/2019:13:35:58 +0000] \"PUT /pagamentos/pagamento/1?forma_de_pagamento=cartao&valor=98.53&moeda=USD&descricao=criando%20um%20pagamento HTTP/1.1\" 500 113\n","timestamp":"2019-12-03T13:35:58.819Z"}
+{"level":"info","message":"::1 - - [03/Dec/2019:13:37:44 +0000] \"PUT /pagamentos/pagamento/1?forma_de_pagamento=cartao&valor=98.53&moeda=USD&descricao=criando%20um%20pagamento&numero=1234123412341234&bandeira=visa&ano_de_expiracao=2016&mes_de_expiracao=12&cvv=123 HTTP/1.1\" 500 113\n","timestamp":"2019-12-03T13:37:44.344Z"}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ListaTel">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+            .jumbotron {
+                width: 40vw;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 5vh;
+            }
+            .table {
+                margin-top: 20px;
+            }
+            .form-control {
+                margin-bottom: 2px;
+            }
+    </style>
+    <title>Document</title>
+</head>
+<body ng-controller="ListaTelCtrl">
+    <div class="jumbotron">
+        <h3 ng-bind="app"></h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+            </tr>
+            <tr ng-repeat="contato in contatos">
+                <td>{{contato.nome}}</td>
+                <td>{{contato.telefone}}</td>
+            </tr>
+        </table>
+        <form>
+            <input type="text" class="form-control" placeholder="Digite o nome" ng-model="nome">
+            <input type="text" class="form-control" placeholder="Digite o telefone" ng-model="telefone">
+            <button class="btn btn-primary btn-block" ng-click="adicionarContato()">Adicionar Contato</button>
+        </form>
+    </div>
+</body>
+</html>
