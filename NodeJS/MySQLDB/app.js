@@ -14,6 +14,11 @@ const router = require('./routes/user.js')
 
 app.use(xss());
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(urlencodedParser);
 app.use(bodyParser.json());
