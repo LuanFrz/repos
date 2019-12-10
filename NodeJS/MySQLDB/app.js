@@ -14,10 +14,10 @@ const router = require('./routes/user.js')
 
 app.use(xss());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     next();
+// });
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(urlencodedParser);
@@ -43,7 +43,12 @@ app.use(morgan('short'));
 
 app.get("/", (req, res) => {
     console.log("Response to route ");
-    res.send("Hello")
+    res.sendFile("index.html");
+});
+
+app.get("/angularjs/", (re, res) => {
+    console.log("Accessing AngularJS side of the NodeJS server.");
+    res.sendFile("./../AngularJS/index.html");
 });
 
 var port = process.env.PORT || 3003;

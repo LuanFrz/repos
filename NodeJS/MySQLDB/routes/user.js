@@ -10,10 +10,6 @@ const pool = mysql.createPool({
     database: 'MySQL-API'
 });
 
-function getConnection () {
-    return pool;
-}
-
 router.post('/user_create', (req, res) => {
 
     console.log(req.body)
@@ -22,7 +18,7 @@ router.post('/user_create', (req, res) => {
     const lastName = req.body.createLastName;
     
     const queryString = "INSERT INTO users (first_name, last_name) VALUES (?, ?)";
-    getConnection().query(queryString, [firstName, lastName], (err, results, fields) => { 
+    pool.query(queryString, [firstName, lastName], (err, results, fields) => { 
         if (err) {
             console.log("Failed to insert new user: " + err);
             res.sendStatus(500);
@@ -35,7 +31,7 @@ router.post('/user_create', (req, res) => {
 
 router.get("/users", (req, res) => {
 
-    const connection = getConnection();
+    const connection = pool;
     connection.query("SELECT * FROM users", (err, rows, fields) => {
         if (err) {
             console.log("Failed to query for users: " + err);
@@ -49,7 +45,7 @@ router.get("/users", (req, res) => {
 router.get('/user/:id', (req, res) => {
 
     const userId = req.params.id;
-    const connection = getConnection();
+    const connection = pool;
     connection.query("SELECT * FROM users WHERE id = ?", [userId], (err, rows, fields) => {
         if (err) {
             console.log("Failed to query to users: " + err);

@@ -4,16 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .jumbotron {
+            width: 60vw;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10vh;
+            text-align: center;
+            box-shadow: 4.5px 4.5px #888888
+        }
+        .form-control {
+            margin-bottom: 6px;
+        }
+        .btn-danger {
+            width: 27vw;
+            margin-right: 0.4vw
+        }
+        .btn-primary {
+            width: 27vw;
+            margin-left: 0.4vw
+        }
+    </style>
+    <title>User registration</title>
 </head>
 <body>
-    <div>
+    <div class="jumbotron">
         <h1>Create a user:</h1><hr>
         <form action="/user_create" method="POST">
 
-            <input type="text" placeholder="Insert first name" name="createFirstName">
-            <input type="text" placeholder="Insert last name" name="createLastName">
-            <button>Submit</button>
+            <input type="text" class="form-control" placeholder="Insert first name" name="createFirstName">
+            <input type="text" class="form-control" placeholder="Insert last name" name="createLastName">
+            <a href="./" class="btn btn-danger">Back</a>
+            <button class="btn btn-primary">Submit</button>
 
         </form>
     </div>
