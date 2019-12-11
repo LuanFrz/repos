@@ -46,11 +46,6 @@ app.get("/", (req, res) => {
     res.sendFile("index.html");
 });
 
-app.get("/angularjs/", (re, res) => {
-    console.log("Accessing AngularJS side of the NodeJS server.");
-    res.sendFile("./../AngularJS/index.html");
-});
-
 var port = process.env.PORT || 3003;
 app.listen(port, () => {
     console.log("Server is running on port "+ port);

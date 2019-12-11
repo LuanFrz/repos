@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ListaTel">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/listaTelCtrl.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <title>Lista Telefonica</title>
+</head>
+<body ng-controller="listaTelCtrl">
+    <div class="jumbotron">
+        <h2 ng-bind="app"></h2><hr>
+        <table class="table table-striped">
+            <tr>
+                <th></th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Operadora</th>
+            </tr>
+            <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+                <td><input type="checkbox" ng-model="contato.selecionado"></td>
+                <td>{{contato.nome}}</td>
+                <td>{{contato.telefone}}</td>
+                <td>{{contato.operadora.nome}}</td>
+            </tr>
+        </table><hr>
+        <form>
+            <input type="text" class="form-control" placeholder="Digite o nome" ng-model="contato.nome">
+            <input type="text" class="form-control" placeholder="Digite o telefone" ng-model="contato.telefone">
+            <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
+                <option value="">Selecione uma operadora</option>
+            </select>
+            <button class="btn btn-danger form-control" ng-click="removerContato(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar contato</button>
+            <button class="btn btn-primary form-control" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone ">Adicionar contato</button>
+        </form>
+    </div>
+    <div ng-include="'views/footer.html'">
+
+    </div>
+</body>
+</html>

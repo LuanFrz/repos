@@ -15,10 +15,10 @@ angular.module("ListaTel").controller("ListaTelCtrl", ($scope) => {
     $scope.adicionarContato = (contato) => {
         $scope.contatos.push(angular.copy(contato));
     };
-    $scope.apagarContatos = (contatos) => {
+    $scope.removerContatos = (contatos) => {
         var contatosSelecionado = contatos.filter((contato) => {
             if (contato.selecionado) return contato;
         });
-        
+
     };
 });
