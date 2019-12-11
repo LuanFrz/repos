@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-messages.min.js"></script>
     <script src="app.js"></script>
     <script src="controllers/listaTelCtrl.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
@@ -32,16 +32,29 @@
                 <td>{{contato.operadora.nome}}</td>
             </tr>
         </table><hr>
-        <form>
-            <input type="text" class="form-control" placeholder="Digite o nome" ng-model="contato.nome">
-            <input type="text" class="form-control" placeholder="Digite o telefone" ng-model="contato.telefone">
+        <form name="contatoForm">
+            <input type="text" class="form-control" placeholder="Digite o nome" ng-model="contato.nome" name="nome" ng-minlength="10" ng-required="true">
+            <input type="text" class="form-control" placeholder="Digite o telefone" ng-model="contato.telefone" name="telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/">
             <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
                 <option value="">Selecione uma operadora</option>
             </select>
-            <button class="btn btn-danger form-control" ng-click="removerContato(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar contato</button>
-            <button class="btn btn-primary form-control" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone ">Adicionar contato</button>
         </form>
-    </div>
+        <div>
+            <div ng-message="required" class="alert alert-danger">
+                Por favor, preencha o campo nome corretamente!
+            </div>
+            <div ng-message="min-length" class="alert alert-danger">
+                Por favor, preencha o campo nome corretamente com ao menos 10 caracteres!
+            </div>
+            <div ng-message="required" class="alert alert-danger">
+                Por favor, preencha o campo telefone corretamente!
+            </div>
+            <div ng-message="min-length" class="alert alert-danger">
+                "Por favor, preencha o campo telefone com o formato DDDDD-DDDD!
+            </div>
+            <button class="btn btn-danger form-control" ng-click="removerContato(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar contato</button>
+            <button class="btn btn-primary form-control" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar contato</button>
+        </div>
     <div ng-include="'views/footer.html'">
 
     </div>

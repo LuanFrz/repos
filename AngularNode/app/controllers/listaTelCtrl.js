@@ -15,6 +15,7 @@ angular.module("ListaTel").controller("listaTelCtrl", ($scope) => {
     $scope.adicionarContato = (contato) => {
         $scope.contatos.push(angular.copy(contato));
         delete $scope.contato;
+        $scope.contatoForm.$setPristine();
     };
     $scope.removerContato = (contatos) => {
         $scope.contatos = contatos.filter((contato) => {

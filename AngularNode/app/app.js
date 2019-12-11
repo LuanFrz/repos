@@ -1,1 +1,1 @@
-angular.module("ListaTel", []);
+angular.module("ListaTel", ['ngMessages']);
