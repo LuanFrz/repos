@@ -4,7 +4,7 @@ const app = express();
 app.use(express.static("app"));
 
 app.get('/', (req, res) => {
-    res.sendFile('./app/index.html')
+    res.sendFile('index.html')
 });
 
 port = process.env.PORT || 8080;
