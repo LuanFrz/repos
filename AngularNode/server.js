@@ -9,4 +9,4 @@ app.get('/*', (req, res) => {
     res.sendfile(path.join(`$/dist/$/index.html`));
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080, console.log("Server running."));
