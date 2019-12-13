@@ -1,26 +1,17 @@
 {
   "name": "angularnode",
   "version": "1.0.0",
-  "description": "Integrating node backend with angular frontend.",
-  "main": "server.js",
+  "description": "Angular 8 project",
+  "main": "index.js",
   "scripts": {
+    "start": "",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "postinstall": "ng build --aot --prod"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LuanFrz/repos.git"
-  },
-  "author": "Luan Frz",
+  "author": "Luan",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LuanFrz/repos/issues"
-  },
-  "homepage": "https://github.com/LuanFrz/repos#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mysql": "^2.17.1",
-    "nodemon": "^2.0.1"
+    "path": "^0.12.7"
   }
 }
