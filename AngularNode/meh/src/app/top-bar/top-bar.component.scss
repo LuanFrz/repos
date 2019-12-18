@@ -1,0 +1,39 @@
+$colors: (
+  primary: rgb(111, 0, 255)
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name)
+}
+
+header {
+  background: color(primary);
+  padding: 1em 0;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a.logo {
+    font-weight: bold;
+  }
+
+  nav {
+    float: right;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      display: flex;
+
+      li a {
+        padding: 1em;
+
+        &:hover {
+          background: darken(color(primary), 10%);
+        }
+      }
+    }
+  }
+}

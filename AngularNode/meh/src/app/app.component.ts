@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class AppComponent {
 
-  registerForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
   title = 'meh';
 }
