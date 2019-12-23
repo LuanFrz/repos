@@ -1,0 +1,274 @@
+<div class="container" ng-controller="feedCtrl">
+  <div class="row">
+    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="ui-block">
+        <div class="top-header top-header-favorit">
+          <div class="top-header-thumb">
+            <img
+              src="/VP_NET/resources/js/app/libs/img/top-header2.jpg"
+              alt="nature"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div
+      class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12"
+    >
+      <div class="ui-block responsive-flex">
+        <div class="ui-block-title">
+          <div class="h6 title">Portais</div>
+          <form class="w-search">
+            <div class="form-group with-button is-empty">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Pesquisar portal..."
+                ng-keyup="Search(1, srcInput)"
+                ng-model="srcInput"
+              />
+              <span class="material-input"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+          <div class="ui-block" style="background: transparent;">
+            <!-- Friend Item -->
+
+            <div class="friend-item friend-groups create-group" data-mh="friend-groups-item" style="height: 355px;"
+            >
+              <a class="full-block" data-toggle="modal" data-target="#create-event"  ></a>
+              <div class="content">
+                <a class=" btn btn-control bg-blue" ng-click="createPortal();"  >
+
+                  <svg class="olymp-plus-icon">
+                    <use  xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-plus-icon" ></use>
+                  </svg>
+                </a>
+
+                <div class="author-content">
+                  <a  ng-click="createPortal();" class="h5 author-name">Novo Portal</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-4 col-md-4 col-sm-12 col-12" ng-repeat="portal in portalData | filter:srcInput">
+          <div class="ui-block">
+            <!-- Friend Item -->
+
+            <div class="friend-item">
+              <div class="friend-header-thumb">
+                <img
+                  src="{{portal.coverImage}}"
+                  alt="friend"
+                  class="imgCover"
+                />
+              </div>
+
+              <div class="friend-item-content">
+                <div class="more">
+                  <svg class="olymp-three-dots-icon">
+                    <use
+                      xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-three-dots-icon"
+                    ></use>
+                  </svg>
+                  <ul class="more-dropdown">
+                    <li>
+                      <a ng-click="createPortal();" class="hovebuttonEdit">Editar Portal</a>
+
+                    <li>
+                      <a  class="hovebuttonEdit" ng-click="openDelete();">Inativar Portal</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="friend-avatar">
+                  <div class="author-thumb">
+                    <img
+                      src="{{portal.profileImage}}"
+                      alt="author"
+                      class="imgProfile"
+                    />
+                  </div>
+                  <div class="author-content">
+                    <a href="#!/portal/1" class="h5 author-name"
+                      >{{portal.title}}</a
+                    >
+                    <div class="country">
+                        {{ normalizeData(portal.created_at) }}
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="swiper-container swiper-swiper-unique-id-0 initialized swiper-container-horizontal"
+                  id="swiper-unique-id-0"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" ng-click="previousPage()" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item" ng-repeat="n in range">
+            <a class="page-link" ng-click="specificPage(n)">{{n}}</a>
+          </li>
+          </li>
+          <li class="page-item">
+            <a class="page-link" ng-click="nextPage()">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CREATE PORTAL -->
+
+<div class="modal" id="create-event" >
+  <div class="modal-dialog window-popup create-event" role="document">
+    <div class="modal-content">
+      <a class="close icon-close" style="cursor: pointer;" ng-click="closeCreatePortal();">
+        <svg class="olymp-close-icon">
+          <use xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+        </svg>
+      </a>
+      <div class="modal-header">
+        <h6 class="title">Novo portal</h6>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-group label-floating">
+          <label class="control-label">Titúlo do portal</label>
+          <input
+            class="form-control"
+            placeholder=""
+            type="text"
+            ng-model="portal.title"
+          />
+        </div>
+
+        <div class="form-group label-floating">
+          <textarea class="form-control" placeholder="Descrição do portal" ng-model="portal.description"></textarea
+          >
+        </div>
+
+        <div class="form-group label-floating">
+          <select
+            class="selectpicker form-control style-2 show-tick"
+            multiple
+            data-live-search="true"
+            ng-model="portal.select"
+          >
+            <option
+              title="Green Goo Rock"
+              data-content='<div class="inline-items">
+										<div class="author-thumb">
+											<img src="/VP_NET/resources/js/app/libs/img/avatar52-sm.jpg" alt="author">
+										</div>
+											<div class="h6 author-title">Green Goo Rock</div>
+
+										</div>'
+              >Green Goo Rock
+            </option>
+
+            <option
+              title="Mathilda Brinker"
+              data-content='<div class="inline-items">
+											<div class="author-thumb">
+												<img src="/VP_NET/resources/js/app/libs/img/avatar74-sm.jpg" alt="author">
+											</div>
+											<div class="h6 author-title">Mathilda Brinker</div>
+										</div>'
+              >Mathilda Brinker
+            </option>
+
+            <option title="Marina Valentine" data-content='<div class="inline-items">
+											<div class="author-thumb">
+												<img src="/VP_NET/resources/js/app/libs/img/avatar48-sm.jpg" alt="author">
+											</div>
+											<div class="h6 author-title">Marina Valentine</div>
+                                        </div>'>
+                Marina Valentine
+            </option>
+
+            <option
+              title="Dave Marinara"
+              data-content='<div class="inline-items">
+											<div class="author-thumb">
+												<img src="/VP_NET/resources/js/app/libs/img/avatar75-sm.jpg" alt="author">
+											</div>
+											<div class="h6 author-title">Dave Marinara</div>
+										</div>'
+              >Dave Marinara
+            </option>
+
+            <option
+              title="Rachel Howlett"
+              data-content='<div class="inline-items">
+											<div class="author-thumb">
+												<img src="/VP_NET/resources/js/app/libs/img/avatar76-sm.jpg" alt="author">
+											</div>
+											<div class="h6 author-title">Rachel Howlett</div>
+										</div>'
+              >Rachel Howlett
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group label-floating">
+            <label class="control-label">Foto de capa</label>
+            <input class="form-control" placeholder="" type="file" ng-model="portal.picCapa"/>
+        </div>
+
+        <div class="form-group label-floating">
+            <label class="control-label">Fundo do portal</label>
+            <input class="form-control" placeholder="" type="file" ng-model="portal.picPortal"/>
+        </div>
+
+        <div class="button-group cadPortal">
+            <button class="btn btn-breez btn-lg" style="background:#3e6db1; color:#fff;">Salvar</button>
+            <button class="btn btn-breez btn-lg" ng-click="closeCreatePortal();" style="background:#fff; color:#000; border: 1px solid #ccc;">Cancelar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal " id="main-popup-delete"  style=" padding-right: 17px;" >
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+
+
+            <a class="close icon-close" ng-click="cancelDelete();">
+                <svg class="olymp-close-icon"><use xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+            <div class="modal-body">
+                    <h6>Você tem certeza que deseja inativar?</h6>
+                <form class="form-inline search-form" method="post" style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    ">
+                    <button class="btn btn-default btn-lg cancelButtonInative" ng-click="cancelDelete();">Cancelar</button>
+                <button class="btn  btn-lg acceptConfirmeInative" ng-click="confirmDelete();">Confirmar</button></form>
+            </div>
+        </div>
+    </div>
+</div>

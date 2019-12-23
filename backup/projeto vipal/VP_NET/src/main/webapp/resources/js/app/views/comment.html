@@ -1,0 +1,88 @@
+<li
+  class="comment-item has-children borderBottomVipal"
+  ng-show="commentItem.active"
+>
+  <div class="post__author author vcard inline-items">
+    <img
+      src="/social/api/rest/social/image/profile/{{commentItem.user.login}}/SMALL_PICTURE"
+      alt="author"
+    />
+
+    <div class="author-date">
+      <a class="h6 post__author-name fn">{{commentItem.user.name}}</a>
+      <div class="post__date">
+        <time class="published">
+          {{commentItem.created_at}}
+        </time>
+      </div>
+    </div>
+
+    <div class="more">
+      <img
+        src="/VP_NET/resources/images/ellipsis.svg"
+        class="ellipsisVipal"
+        height="15"
+        width="15"
+      />
+      <ul class="more-dropdown">
+        <li>
+          <a class="hovebuttonEdit" ng-click="inputEditComment()">Editar</a>
+        </li>
+        <li>
+          <a class="hovebuttonEdit" ng-click="inativeComment()">Remover</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="editCommentContainerInPost2{{commentItem.id}}"></div>
+  <p
+    style="white-space: pre-line; word-wrap: break-word;"
+    id="showComment2{{commentItem.id}}"
+  >
+    {{commentItem.comment}}
+  </p>
+
+  <div class="post-additional-info inline-items commentIncommentReaction">
+    <div
+      class="reactionVipalContainer"
+      id="{{commentItem.id}}"
+      place="2"
+      reaction="commentItem.reaction"
+      reaction-count="commentItem.__meta__.totalReactions"
+      ng-reaction
+    ></div>
+    <div class="comments-shared">
+      <a
+        class="post-add-icon inline-items"
+        ng-click="inputComment('comment', 2, commentItem.id)"
+      >
+        <img src="/VP_NET/resources/images/message.svg" class="commentVipal" />
+        <span>{{commentItem.__meta__.totalComments}}</span>
+      </a>
+    </div>
+  </div>
+  <div id="commentContainerInPost2{{commentItem.id}}"></div>
+
+  <ul
+    class="comments-list children"
+    ng-if="commentItem.commentInComment.length > 0"
+  >
+    <div
+      ng-repeat="itemCommentInComment in commentItem.commentInComment"
+      ng-comment-in-comment
+      comment-total="commentItem.__meta__.totalComments"
+      item-comment-in-comment="itemCommentInComment"
+    ></div>
+  </ul>
+
+  <a
+    class="more-comments"
+    ng-click="loadingComments()"
+    ng-if="!loadedLastItem && commentItem.__meta__.totalComments > 0"
+    ><span
+      >Carregar
+      <span ng-if="commentItem.commentInComment.length > 0">mais</span>
+      comentários</span
+    ></a
+  >
+</li>

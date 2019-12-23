@@ -1,0 +1,67 @@
+
+  <li
+    class="comment-item has-children"
+    ng-show="itemCommentInComment.active"
+  >
+    <div class="post__author author vcard inline-items">
+      <img
+      src="/social/api/rest/social/image/profile/{{itemCommentInComment.user.login}}/SMALL_PICTURE"
+      alt="author"
+    />
+
+      <div class="author-date">
+        <a class="h6 post__author-name fn"
+          >{{itemCommentInComment.user.name}}</a
+        >
+        <div class="post__date">
+          <time class="published" >
+            {{itemCommentInComment.created_at}}
+          </time>
+        </div>
+      </div>
+
+      <div class="more">
+
+        <img
+          src="/VP_NET/resources/images/ellipsis.svg"
+          class="ellipsisVipal"
+          height="15"
+          width="15"
+        />
+        <ul class="more-dropdown">
+          <li>
+            <a class="hovebuttonEdit" ng-click="inputEditComment()" >Editar</a>
+          </li>
+          <li>
+            <a class="hovebuttonEdit" ng-click="inativeComment()" >Remover</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- <p>
+      <div ng-bind-html="itemCommentInComment.comment">
+        </div>
+    </p> -->
+
+
+    <div id="editCommentContainerInComment2{{itemCommentInComment.id}}"></div>
+    <p
+      style="white-space: pre-line; word-wrap: break-word;"
+      id="showCommentInComment2{{itemCommentInComment.id}}"
+    >
+      {{itemCommentInComment.comment}}
+    </p>
+
+    <div class="post-additional-info inline-items paddingBootomreaction ">
+      <div
+        class="reactionVipalContainer"
+        id="{{itemCommentInComment.id}}"
+        place="2"
+        reaction="itemCommentInComment.reaction"
+        reaction-count="itemCommentInComment.__meta__.totalReactions"
+        ng-reaction
+      ></div>
+    </div>
+  </li>
+</ul>

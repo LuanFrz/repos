@@ -1,0 +1,72 @@
+<div class="ui-block">
+  <div class="news-feed-form">
+    <div class="nav nav-tabs" role="tablist">
+      <div class="nav-item">
+        <span class="nav-link active inline-items" data-toggle="tab" role="tab">
+          <svg class="olymp-status-icon">
+            <use
+              xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-status-icon"
+            ></use>
+          </svg>
+
+          <span>Status</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="tab-content">
+      <div
+        class="tab-pane active"
+        id="home-1"
+        role="tabpanel"
+        aria-expanded="true"
+      >
+        <form>
+          <div class="author-thumb">
+            <img
+              src="/social/api/rest/social/image/profile/{{userLogin}}/SMALL_PICTURE"
+              alt="autor"
+              style="height: 36px; width: 36px;"
+            />
+          </div>
+          <div class="form-group with-icon label-floating is-empty">
+            <textarea
+              class="form-control"
+              placeholder=""
+              ng-model="message"
+            ></textarea>
+          </div>
+          <div id="postInvitedImageContainer">
+            <div
+              class="postInvitedImage"
+              style="background-image: url('{{thumb.link}}');"
+              ng-repeat="thumb in listImages"
+            >
+              <span ng-click="removeImage(thumb)">X</span>
+            </div>
+          </div>
+
+          <div class="add-options-message">
+            <label class="options-message">
+              <input
+                type="file"
+                style="display: none;"
+                id="editSendPicture-{{itemTimeline.id}}"
+                accept="image/*, video/*"
+                multiple
+              />
+              <img
+                src="/VP_NET/resources/images/camera.svg"
+                class="postCameraVipal"
+              />
+            </label>
+
+            <button class="btn btn-primary btn-md-2" ng-click="savePost()">
+              Editar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,220 @@
+.reactionVipalContainer {
+  border: none !important;
+  margin-left: 0px !important;
+}
+
+.post-additional-info-Vipal {
+  padding: 0px !important;
+  border: none !important;
+}
+
+/* .comments-list .comment-item.has-children {
+  padding-bottom: 15px !important;
+} */
+
+.children {
+  margin: 0px !important;
+}
+
+.ellipsisVipal {
+  width: 15px !important;
+  height: 15px !important;
+  opacity: 0.3;
+}
+
+.more {
+  cursor: pointer !important;
+}
+
+.commentVipal {
+  height: 26px !important;
+  width: 23px !important;
+}
+
+.comments-shared {
+  filter: grayscale(100%);
+}
+
+.comments-shared:hover {
+  filter: grayscale(0%);
+}
+
+.more-comments {
+  border-top: 1px solid #eee;
+}
+
+.commentIncommentReaction:not(:last-child) {
+  padding-bottom: 20px;
+}
+
+.post-add-icon {
+  cursor: pointer !important;
+}
+
+.hovebuttonEdit {
+  color: #515365 !important;
+}
+.hovebuttonEdit:hover {
+  color: #38a9ff !important;
+}
+
+.reactionVipal a img {
+  cursor: pointer;
+}
+
+.more-comments {
+  cursor: pointer;
+}
+
+.paddingBootomreaction {
+  padding-bottom: 20px;
+}
+
+.row:after,
+.row:before {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.span6 {
+  float: left;
+  width: 48%;
+  padding: 1%;
+}
+
+.emojionearea-standalone {
+  float: right;
+}
+
+.comment-item .emojioneemoji {
+  height: 16px !important;
+  width: 16px !important;
+  margin: 0px 1px;
+}
+
+.comment-form-vipal {
+  white-space: nowrap;
+  overflow: initial;
+  display: flex;
+  flex-direction: column;
+}
+
+.emojioneemoji {
+  min-width: 16px !important;
+  min-height: 16px !important;
+}
+
+.emojionearea-editor {
+  min-height: 32px !important;
+}
+.emojionearea {
+  border-radius: 17px !important;
+  padding-right: 0px !important;
+  white-space: normal;
+}
+
+i .emojioneemoji {
+  min-width: 24px !important;
+  min-height: 24px !important;
+  white-space: normal;
+}
+
+.commentPost::-webkit-scrollbar,
+#postInvitedImageContainer::-webkit-scrollbar,
+#postInvitedImageContainer::-webkit-scrollbar-thumb,
+.commentPost::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  height: 4px;
+  width: 6px;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+#postInvitedImageContainer:hover::-webkit-scrollbar-thumb,
+.commentPost:hover::-webkit-scrollbar-thumb {
+  background: #999;
+  z-index: 2;
+}
+#postInvitedImageContainer::-webkit-scrollbar-thumb,
+.commentPost::-webkit-scrollbar-thumb {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #aaa;
+  z-index: 0;
+}
+
+.postCameraVipal {
+  height: 26px !important;
+  width: 23px !important;
+  opacity: 0.3;
+}
+
+.postCameraVipal:hover {
+  opacity: 1;
+}
+
+.upload-photo-item-vipal {
+  width: 100%;
+}
+
+.postInvitedImage {
+  height: 44px;
+  width: 44px;
+  min-width: 44px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.7;
+
+  margin: 10px 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+.postInvitedImage:first-child {
+  margin: 10px 5px 10px 0px;
+}
+
+.postInvitedImage span {
+  cursor: pointer;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0px 3px;
+  border-radius: 2px;
+  color: #fff;
+}
+
+.postInvitedImage:hover span {
+  display: block;
+}
+
+.postInvitedImage:hover {
+  opacity: 1;
+}
+
+#postInvitedImageContainer {
+  margin: 0px 25px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.comments-list .comment-item {
+  padding-left: 30px !important;
+}
+
+.post-block-photo a,
+.post-block-photo span {
+  padding: 0 4px 0px 4px !important;
+  margin-bottom: 8px;
+}
+
+.post-block-photo a img {
+  object-fit: cover;
+}
+
+.more-photos:after {
+  right: 4px !important;
+  left: 4px !important;
+  height: 100% !important;
+}

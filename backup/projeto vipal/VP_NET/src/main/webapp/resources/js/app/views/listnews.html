@@ -1,0 +1,423 @@
+<div class="main-header" ng-controller="feedCtrl">
+    <div class="content-bg-wrap bg-group"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
+                <div class="main-header-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="ui-block responsive-flex">
+        <div class="ui-block-title">
+            <div class="h6 title">Notícias</div>
+            <form class="w-search ng-pristine ng-valid">
+                <div class="form-group with-button is-empty">
+                    <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Pesquisar notícias..."
+                    />
+                    <span class="material-input"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+            <!-- Friend Item -->
+
+            <div
+                class="friend-item friend-groups create-group"
+                data-mh="friend-groups-item"
+                style="height: 450px;"
+            >
+                <a
+                    href="#"
+                    class="  full-block"
+                    data-toggle="modal"
+                    data-target="#create-friend-group-1"
+                ></a>
+                <div class="content">
+                    <a
+                        ng-click="createNewsorEdit();"
+                        class="  btn btn-control bg-blue"
+                        data-toggle="modal"
+                        data-target="#create-friend-group-1"
+                    >
+                        <svg class="olymp-plus-icon">
+                            <use
+                                xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-plus-icon"
+                            ></use>
+                        </svg>
+                    </a>
+
+                    <div class="author-content">
+                        <a ng-click="createNewsorEdit();" class="h5 author-name"
+                            >Nova Notícia</a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- ... end Friend Item -->
+        </div>
+
+        <div
+            class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"
+            ng-repeat="new in news.data"
+        >
+            <div class="ui-block ui-block-news">
+                <!-- Post -->
+
+                <article class="hentry blog-post">
+                    <div class="post-thumb">
+                        <img src="{{new.news.coverImage}}" alt="photo" />
+                    </div>
+
+                    <div class="post-content">
+                        <div class="more">
+                            <svg
+                                class="olymp-three-dots-icon"
+                                style="float: right;margin-left: 5px;"
+                            >
+                                <use
+                                    xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-three-dots-icon"
+                                ></use>
+                            </svg>
+                            <ul class="more-dropdown">
+                                <li>
+                                    <a
+                                        ng-click="createNewsorEdit();"
+                                        class="hovebuttonEdit"
+                                        >Editar Notícia</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="hovebuttonEdit"
+                                        ng-click="openDelete();"
+                                        >Inativar Notícia</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <a
+                            href="#!/news/{{new.code}}"
+                            class="h4 post-title"
+                            ng-bind="new.news.title"
+                        >
+                        </a>
+                        <p
+                            class="post-description"
+                            ng-bind="new.news.description"
+                        ></p>
+                    </div>
+                </article>
+
+                <!-- ... end Post -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div
+            class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 container-pagination"
+        >
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <!-- <li class="page-item disabled"> -->
+                    <li class="page-item">
+                        <a class="page-link" ng-click="previousPage()"
+                            >Anterior</a
+                        >
+                    </li>
+                    <li
+                        class="page-item"
+                        ng-repeat="page in news | limitTo : lastPage"
+                        ng-if="$index > 0 && $index <= lastPage"
+                        ng-click="goPage($index)"
+                    >
+                        <a class="page-link" id="page-link-{{$index}}"
+                            >{{$index}}</a
+                        >
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" ng-click="nextPage()"
+                            >Next
+                            <div class="ripple-container"></div
+                        ></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- MODAL CREATE PORTAL -->
+
+<div class="modal " id="create-event">
+    <div class="modal-dialog window-popup " role="document">
+        <div class="modal-content">
+            <a
+                class="close icon-close"
+                style="cursor: pointer;"
+                ng-click="closeCreateNews();"
+            >
+                <svg class="olymp-close-icon">
+                    <use
+                        xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-close-icon"
+                    ></use>
+                </svg>
+            </a>
+            <div class="modal-header">
+                <h6 class="title">Nova Notícia</h6>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group label-floating">
+                    <label class="control-label">Titúlo da notícia</label>
+                    <input
+                        class="form-control"
+                        ng-model="manipulateNews.title"
+                        placeholder=""
+                        type="text"
+                    />
+                </div>
+                <div class="form-group label-floating">
+                    <label class="control-label">Descrição da notícia</label>
+                    <input
+                        class="form-control"
+                        ng-model="manipulateNews.description"
+                        placeholder=""
+                        type="text"
+                    />
+                </div>
+                <div class="row">
+                    <div class="col col-md-2 col-sm-12">
+                        <div class="form-group date-time-picker label-floating">
+                            <label class="control-label">Data Inicial</label>
+                            <input
+                                class="unstyled"
+                                name="datetimepicker"
+                                type="date"
+                                value="26/03/2016"
+                                ng-model="initialDate"
+                            />
+                            <span class="input-group-addon">
+                                <svg class="olymp-calendar-icon icon">
+                                    <use
+                                        xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-calendar-icon"
+                                    ></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col col-md-2 col-sm-12">
+                        <div class="form-group date-time-picker label-floating">
+                            <label class="control-label">Início</label>
+                            <input
+                                class="form-control"
+                                placeholder="00:00"
+                                type="text"
+                                ng-model="timeInitial"
+                                ng-blur="formatTimeInitial();"
+                            />
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                    <div class="col col-md-8 col-sm-12">
+                        <div class="form-group label-floating form-control">
+                            <select
+                                class="selectpicker form-control style-2 show-tick"
+                                ng-model="permissionType"
+                            >
+                                <option ng-value="">Tipo da Notícia</option>
+                                <option ng-value="1">Público</option>
+                                <option ng-value="2">Privado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-md-2 col-sm-12">
+                        <div class="form-group date-time-picker label-floating">
+                            <label class="control-label">Data Final</label>
+                            <input
+                                class="unstyled"
+                                name="datetimepicker"
+                                type="date"
+                                value="26/03/2016"
+                                ng-model="finalDate"
+                            />
+                            <span class="input-group-addon">
+                                <svg class="olymp-calendar-icon icon">
+                                    <use
+                                        xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-calendar-icon"
+                                    ></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col col-md-2 col-sm-12">
+                        <div class="form-group date-time-picker label-floating">
+                            <label class="control-label">Fim</label>
+                            <input
+                                class="form-control"
+                                placeholder="00:00"
+                                type="text"
+                                ng-model="timeFinal"
+                                ng-blur="formatTimeFinal();"
+                            />
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                    <div class="col col-md-8 col-sm-12">
+                        <div
+                            class="form-group label-floating"
+                            ng-show="permissionType === 2"
+                            ng-init="loadingSelect();"
+                        >
+                            <select
+                                class="selectpicker form-control style-2 show-tick gruposdofluig"
+                                ng-model="manipulateNews.groups"
+                                title="Grupos para visualização"
+                                name="groups"
+                                id="groupsFluig"
+                                multiple="multiple"
+                                ng-options="groupsfluig as groupsfluig for groupsfluig in groupsInFluig"
+                                required
+                            >
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-sm-12">
+                        <div class="form-group label-floating styleDivImg">
+                            <a ng-click="clickOpenInput();"
+                                ><img
+                                    class="styleImgNew"
+                                    src="/VP_NET/resources/js/app/libs/svg-icons/camera.svg"
+                            /></a>
+                            <label class="labelPhoto">{{nameFile}}</label>
+
+                            <input
+                                class="form-control inputCoverNews"
+                                placeholder=""
+                                type="file"
+                                ng-model="manipulateNews.coverImage"
+                                data-url="/ecm/upload"
+                                onchange="angular.element(this).scope().setFiles(this);
+                                angular.element(this).scope()"
+                                style="display: none;"
+                            />
+                        </div>
+                    </div>
+                    <div class="col col-md-8 col-sm-12">
+                        <select
+                            class="selectpicker form-control style-2 show-tick"
+                            ng-model="communities"
+                            name="communities"
+                            id="communities"
+                            title="Portais para visualização"
+                            ng-options="communitie.id as communitie.title for communitie in communities track by communitie.id"
+                            required
+                            multiple="multiple"
+                        >
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label">Tags</label>
+
+                    <tags-input
+                        ng-model="manipulateNews.tag"
+                        display-property="name"
+                        text="text"
+                        addOnEnter="true"
+                    >
+                        <auto-complete
+                            load-on-focus="true"
+                            load-on-empty="true"
+                            display-property="name"
+                            select-first-match="false"
+                            min-length="1"
+                            addOnEnter="true"
+                            source="loadTags($query)"
+                        ></auto-complete>
+                    </tags-input>
+                </div>
+                <div class="form-group label-floating">
+                    <textarea
+                        class="form-control"
+                        placeholder="Conteúdo da notícia"
+                        ng-model="manipulateNews.content"
+                    ></textarea>
+                </div>
+
+                <div class="button-group cadPortal">
+                    <button
+                        class="btn btn-breez btn-lg"
+                        style="background:#3e6db1; color:#fff;"
+                        ng-click="confirmCreateOrEditNews();"
+                    >
+                        Salvar
+                    </button>
+                    <button
+                        class="btn btn-breez btn-lg"
+                        ng-click="closeCreateNews();"
+                        style="background:#fff; color:#000; border: 1px solid #ccc;"
+                    >
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal " id="main-popup-delete" style=" padding-right: 17px;">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <a class="close icon-close" ng-click="cancelDelete();">
+                <svg class="olymp-close-icon">
+                    <use
+                        xlink:href="/VP_NET/resources/js/app/libs/svg-icons/sprites/icons.svg#olymp-close-icon"
+                    ></use>
+                </svg>
+            </a>
+            <div class="modal-body">
+                <h6>Você tem certeza que deseja inativar?</h6>
+                <form
+                    class="form-inline search-form"
+                    method="post"
+                    style="
+                              display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                          "
+                >
+                    <button
+                        class="btn btn-default btn-lg cancelButtonInative"
+                        ng-click="cancelDelete();"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        class="btn  btn-lg acceptConfirmeInative"
+                        ng-click="confirmDelete();"
+                    >
+                        Confirmar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

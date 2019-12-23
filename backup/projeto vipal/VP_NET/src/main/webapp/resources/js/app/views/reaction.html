@@ -1,0 +1,62 @@
+<div class="post-additional-info inline-items post-additional-info-Vipal">
+  <input
+    type="image"
+    ng-src="{{userReaction}}"
+    alt="reaction"
+    id="reaction-{{place}}-{{id}}"
+    ng-class="{greyIcon: !userReacted}"
+    class="pointer iconReaction"
+  />
+
+  <ul class="friends-harmonic friends-harmonic-vipal">
+    <li ng-repeat="reactionItem in reaction | limitTo:3">
+      <a>
+        <img
+          src="/social/api/rest/social/image/profile/{{reactionItem.user.login}}/SMALL_PICTURE"
+          alt="friend"
+          style="height: 28px; width: 28px;"
+        />
+      </a>
+    </li>
+  </ul>
+
+  <div
+    class="names-people-likes names-people-likes-Vipal"
+    ng-if="reactionCount > 2"
+  >
+    <a
+      >{{reaction[0].user.id === vipal.idUser ? 'Você' :
+      reaction[0].user.name}}</a
+    >, <a>{{reaction[1].user.name}}</a> <br />
+    e mais <b>{{reactionCount-2}}</b> reagiram
+  </div>
+  <div
+    class="names-people-likes names-people-likes-Vipal"
+    ng-if="reactionCount === 2"
+  >
+    <a
+      >{{reaction[0].user.id === vipal.idUser ? 'Você' :
+      reaction[0].user.name}}</a
+    >
+    e <a>{{reaction[1].user.name}}</a><br />
+    reagiram
+  </div>
+  <div
+    class="names-people-likes names-people-likes-Vipal"
+    ng-if="reactionCount === 1"
+  >
+    <a
+      >{{reaction[0].user.id === vipal.idUser ? 'Você' :
+      reaction[0].user.name}}</a
+    >
+    <br />
+    reagiu
+  </div>
+  <div
+    class="names-people-likes names-people-likes-Vipal"
+    ng-if="reactionCount === 0"
+  >
+    Seja o primeiro<br />
+    a reagir
+  </div>
+</div>

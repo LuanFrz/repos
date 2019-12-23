@@ -1,0 +1,117 @@
+<div class="ui-block" ng-show="timeline.active">
+  <article class="hentry post">
+    <div class="post__author author vcard inline-items">
+      <img
+        src="/social/api/rest/social/image/profile/{{timeline.user.login}}/SMALL_PICTURE"
+        alt="autor"
+        style="height: 36px; width: 36px;"
+      />
+
+      <div class="author-date">
+        <a class="h6 post__author-name fn" href="02-ProfilePage.html"
+          >{{timeline.user.name}}</a
+        >
+        <div class="post__date">
+          <time class="published">
+            {{timeline.created_at}}
+          </time>
+        </div>
+      </div>
+
+      <div class="more">
+        <img src='/VP_NET/resources/images/ellipsis.svg' class="ellipsisVipal" height="15" width="15" ng-if="timeline.creator == idUser || isAdmin">
+        <ul class="more-dropdown">
+          <li>
+            <a class="hovebuttonEdit" ng-if="timeline.creator == idUser" ng-click="editPost()" >Editar</a>
+          </li>
+          <li>
+            <a class="hovebuttonEdit" ng-click="inativePost()" >Remover</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="white-space: pre-line; word-wrap: break-word;">{{timeline.post.message.trim()}}</p>
+
+    <div class="post-block-photo js-zoom-gallery photo1{{timeline.id}}"  ng-if='timeline.post.postFile.length > 0'>
+
+      <a href="{{timeline.post.postFile[0].file}}" ng-if='timeline.post.postFile.length > 0 && timeline.post.postFile.type == 1' ng-class="{'half-width': timeline.post.postFile.length === 2 || timeline.post.postFile.length === 4 || timeline.post.postFile.length >= 5}" class=""><img ng-src="{{timeline.post.postFile[0].file}}" alt="photo"></a>
+
+      <video controls ng-class="{'half-width': timeline.post.postFile.length === 2 || timeline.post.postFile.length === 4 || timeline.post.postFile.length >= 5, 'width100': timeline.post.postFile.length === 1}" ng-if='timeline.post.postFile.length > 0 && timeline.post.postFile[0].type == 2'>
+        <source ng-src="{{timeline.post.postFile[0].file}}">
+      Your browser does not support the video tag.
+      </video>
+
+
+
+
+
+
+
+
+
+      <a href="{{timeline.post.postFile[1].file}}" ng-if='timeline.post.postFile.length > 1 && timeline.post.postFile[1].type == 1' class="half-width"><img src="{{timeline.post.postFile[1].file}}" alt="photo"></a>
+
+      <video controls class="half-width" ng-if='timeline.post.postFile.length > 1 && timeline.post.postFile[1].type == 2'>
+        <source ng-src="{{timeline.post.postFile[1].file}}">
+      Your browser does not support the video tag.
+      </video>
+
+
+
+
+
+
+
+
+
+      <a href="{{timeline.post.postFile[2].file}}"  ng-if='timeline.post.postFile.length > 2' ng-class="{'half-width': timeline.post.postFile.length === 3 || timeline.post.postFile.length === 4, 'col col-3-width': timeline.post.postFile.length >= 5}"><img src="{{timeline.post.postFile[2].file}}" alt="photo"></a>
+
+      <a href="{{timeline.post.postFile[3].file}}" ng-if='timeline.post.postFile.length > 3' ng-class="{'half-width': timeline.post.postFile.length === 4, 'col col-3-width': timeline.post.postFile.length >= 5}" ><img src="{{timeline.post.postFile[3].file}}" alt="photo"  ></a>
+
+      <a href="{{timeline.post.postFile[4].file}}" ng-if='timeline.post.postFile.length > 4' ng-class="{'half-width': timeline.post.postFile.length === 4, 'col col-3-width': timeline.post.postFile.length >= 5, 'more-photos': timeline.post.postFile.length > 5}">
+        <img src="{{timeline.post.postFile[4].file}}" alt="photo" >
+        <span class="h2" ng-if='timeline.post.postFile.length > 5'>+{{timeline.post.postFile.length-4}}</span>
+      </a>
+    </div>
+
+    <div class="post-additional-info inline-items">
+      <div
+        class="reactionVipalContainer"
+        id="{{timeline.id}}"
+        place="1"
+        reaction="timeline.reaction"
+        reaction-count="timeline.__meta__.totalReactions"
+        ng-reaction
+      >
+    </div>
+    <div class="comments-shared">
+      <a  class="post-add-icon inline-items" ng-click="inputComment('post', 1, timeline.id)">
+        <img src="/VP_NET/resources/images/message.svg" class="commentVipal" />
+        <span>{{timeline.__meta__.totalComments}}</span>
+      </a>
+    </div>
+
+  </article>
+  <div id='commentContainer1{{timeline.id}}'></div>
+
+  <ul class="comments-list children" ng-if="timeline.comment.length > 0">
+    <div ng-comment ng-repeat="commentItem in timeline.comment" comment-item='commentItem' comment-list='timeline.comment' comment-total="timeline.__meta__.totalComments" ></div>
+  </ul>
+
+  <a class="more-comments" ng-click="loadingComments()" ng-if="!loadedLastItem && timeline.__meta__.totalComments > 0"><span>Carregar <span ng-if="timeline.comment.length > 0">mais</span> comentários</span></a>
+
+</div>
+
+
+<div class="modal fade" id="create-friend-group-1-{{timeline.id}}" tabindex="-1" role="dialog" aria-labelledby="create-friend-group-1-{{timeline.id}}" aria-hidden="true">
+	<div class="modal-dialog window-popup create-friend-group create-friend-group-1-{{timeline.id}}" role="document">
+		<div class="modal-content">
+			<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+				<svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+			</a>
+      <div ng-edit-post item-timeline="timeline"></div>
+			</div>
+		</div>
+	</div>
+</div>

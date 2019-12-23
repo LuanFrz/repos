@@ -1,0 +1,260 @@
+/* Coloque aqui seu codigo CSS */
+.wcm-all-content .wcm_widget {
+  padding: 0px;
+  border-radius: 0px;
+  background-color: #ffffff;
+  margin: 0px;
+  -webkit-box-shadow: 0px 2px 10px -5px #000;
+  box-shadow: 0px 2px 10px -5px #000;
+}
+
+.wcm-all-content > #wcm-content {
+  background-color: #f7f7f7 !important;
+  padding: 0px 0px 0px 0px !important;
+}
+
+.wcm-all-content {
+  display: block;
+  float: left;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0px !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#visualizacaoPagina {
+  background-color: transparent;
+  width: 100% !important;
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-bottom: 0px !important;
+  border-radius: 0;
+  -moz-border-radius: 0;
+}
+
+#visualizacaoPagina .layout-1-1 {
+  float: none;
+  clear: both;
+  width: 100%;
+  margin-bottom: 0px !important;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.super-widget {
+  background: #f7f7f7 !important;
+}
+
+.reactionVipal {
+  padding: 10px !important;
+  border: none !important;
+  background: #ffffff;
+  min-width: 215px;
+}
+
+.reactionVipal > ul {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0px;
+  justify-content: center;
+}
+
+.reactionVipal > ul > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.greyIcon {
+  filter: grayscale(100%) !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.iconReaction {
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  border: none;
+}
+
+.iconReaction:focus {
+  outline: none;
+}
+
+.names-people-likes-Vipal,
+.friends-harmonic-vipal {
+  margin-left: 0px !important;
+}
+
+.cadPortal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hovebuttonEdit {
+  color: #515365 !important;
+  cursor: pointer !important;
+}
+.hovebuttonEdit:hover {
+  color: #38a9ff !important;
+  cursor: pointer !important;
+}
+
+#create-event {
+  background: #3c3b3bc7;
+  opacity: 1;
+}
+
+#main-popup-delete {
+  background: #3c3b3bc7;
+  opacity: 1;
+}
+
+.cancelButtonInative {
+  color: #000 !important;
+  border: 1px solid #aaa !important;
+}
+
+.acceptConfirmeInative {
+  background: #38a9ff !important;
+  color: #fff !important;
+}
+
+.contentPortalName {
+  margin: 60px 0 0 0 !important;
+}
+
+.contentAuthor {
+  margin-top: 30px !important;
+}
+
+.displayFriend {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#edit-my-poll-popup {
+  background: #3c3b3bc7;
+  opacity: 1;
+}
+
+.fc-left {
+  text-align: center !important;
+  padding-top: 15px;
+}
+.fc-right {
+  text-align: right !important;
+}
+.fc-icon-chevron-right {
+  background: url("/VP_NET/resources/js/app/libs/svg-icons/next.svg");
+  width: 50px;
+  height: 30px;
+  background-repeat: no-repeat;
+}
+
+.fc-icon-chevron-left {
+  background: url("/VP_NET/resources/js/app/libs/svg-icons/prev.svg");
+  width: 50px;
+  height: 30px;
+  background-repeat: no-repeat;
+}
+
+.accessNews {
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 12px;
+  color: #515365;
+  display: block;
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.accessNews span {
+  -webkit-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+}
+
+.accessNews:hover span {
+  color: #3e6db1;
+}
+
+.width100 {
+  width: 100%;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  display: none !important;
+}
+
+select.bs-select-hidden,
+select.selectpicker {
+  display: block !important;
+}
+select.selectpicker {
+  display: block !important;
+}
+
+.labelPhoto {
+  margin: 0;
+  margin-left: 20px;
+}
+
+.styleDivImg {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.styleImgNew {
+  height: 35px;
+  width: 35px;
+}
+
+.imgCover {
+  height: 122px;
+  width: 318px;
+  object-fit: cover;
+}
+
+.imgProfile {
+  width: 92px;
+  height: 92px;
+}
+.post-thumb {
+  width: 100% !important;
+  height: 260px !important;
+}
+
+.post-description {
+  /* white-space: nowrap; */
+  width: 94%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 11ch;
+  text-align: justify;
+}
+
+.ui-block-news {
+  height: 450px;
+}
+
+.container-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}

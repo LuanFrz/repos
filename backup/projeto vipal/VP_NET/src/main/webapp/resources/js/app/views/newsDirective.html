@@ -1,0 +1,60 @@
+<div class="ui-block" ng-show="timeline.active">
+  <article class="hentry post">
+    <div class="post__author author vcard inline-items">
+      <img
+        src="/social/api/rest/social/image/profile/{{timeline.user.login}}/SMALL_PICTURE"
+        alt="autor"
+        style="height: 36px; width: 36px;"
+      />
+
+      <div class="author-date">
+        <a class="h6 post__author-name fn" href="02-ProfilePage.html"
+          >{{timeline.user.name}}</a
+        >
+        <div class="post__date">
+          <time class="published">
+            {{timeline.created_at}}
+          </time>
+        </div>
+      </div>
+    </div>
+
+    <h5 style="word-wrap: break-word;">{{timeline.news.title.trim()}}</h5>
+    <p style="white-space: pre-line; word-wrap: break-word;">{{timeline.news.description.trim()}}</p>
+
+    <div class="post-block-photo js-zoom-gallery photo1{{timeline.id}}" >
+
+      <a href="{{timeline.news.coverImage}}" ><img ng-src="{{timeline.news.coverImage}}" alt="photo"></a>
+
+    </div>
+    <a class="accessNews pointer">
+      <span>Visualizar Notícia</span>
+    </a>
+
+    <div class="post-additional-info inline-items">
+      <div
+        class="reactionVipalContainer"
+        id="{{timeline.id}}"
+        place="1"
+        reaction="timeline.reaction"
+        reaction-count="timeline.__meta__.totalReactions"
+        ng-reaction
+      >
+    </div>
+    <div class="comments-shared">
+      <a  class="post-add-icon inline-items" ng-click="inputComment('post', 1, timeline.id)">
+        <img src="/VP_NET/resources/images/message.svg" class="commentVipal" />
+        <span>{{timeline.__meta__.totalComments}}</span>
+      </a>
+    </div>
+
+  </article>
+  <div id='commentContainer1{{timeline.id}}'></div>
+
+  <ul class="comments-list children" ng-if="timeline.comment.length > 0">
+    <div ng-comment ng-repeat="commentItem in timeline.comment" comment-item='commentItem' comment-list='timeline.comment' comment-total="timeline.__meta__.totalComments" ></div>
+  </ul>
+
+  <a class="more-comments" ng-click="loadingComments()" ng-if="!loadedLastItem && timeline.__meta__.totalComments > 0"><span>Carregar <span ng-if="timeline.comment.length > 0">mais</span> comentários</span></a>
+
+</div>
